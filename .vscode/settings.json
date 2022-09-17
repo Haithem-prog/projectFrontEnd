@@ -1,0 +1,8 @@
+{
+    "dart.enableSdkFormatter": true,
+    "editor.formatOnSave": false,
+    "terminal.integrated.scrollback": 10000000,
+    "dart.lineLength": 10000,
+    "dart.maxLogLineLength": 20000,
+
+}
