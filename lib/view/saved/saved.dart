@@ -1,7 +1,6 @@
 import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/ratin_star.dart';
 import 'package:book_store/models/default_book_Model.dart';
-import 'package:book_store/services/backed_services/get_saved_books.dart';
 import 'package:book_store/services/backed_services/save_unsave.dart';
 import 'package:book_store/services/saved_books_condiction.dart';
 import 'package:book_store/utilz/theme.dart';
@@ -21,12 +20,11 @@ class _SavedState extends State<Saved> {
   Widget build(BuildContext context) {
     GetSavedBooks.getAllSavedBooks();
     Size size = MediaQuery.of(context).size; //subrashi
-    bool savestat = true;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
         width: size.width,
-        padding: EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 30),
         child: ListView(
           children: BookModel.savedBookList
               .map((e) => TextButton(
@@ -81,7 +79,7 @@ class _SavedState extends State<Saved> {
                                               shape: MaterialStateProperty.all(
                                                 RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.circular(9),
-                                                  side: BorderSide(
+                                                  side: const BorderSide(
                                                     color: AppTheme.mainColor,
                                                     width: 2,
                                                   ),
@@ -93,7 +91,7 @@ class _SavedState extends State<Saved> {
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(bottom: 6),
+                                          margin: const EdgeInsets.only(bottom: 6),
                                           child: IconButton(
                                             iconSize: 30,
                                             color: const Color(0xffE9C46A),

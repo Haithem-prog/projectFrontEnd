@@ -1,7 +1,6 @@
 import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/ratin_star.dart';
 import 'package:book_store/models/default_book_Model.dart';
-import 'package:book_store/services/backed_services/auth.dart';
 import 'package:book_store/services/profile_condition.dart';
 import 'package:book_store/services/purchased_books_condition.dart';
 import 'package:book_store/view/home/book_details_screen.dart';
@@ -29,7 +28,7 @@ class Profile extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                  padding: EdgeInsets.only(top: 40),
+                  padding: const EdgeInsets.only(top: 40),
                   child: SvgPicture.asset(
                     'assets/images/profile.svg',
                     color: Colors.white,
@@ -39,7 +38,7 @@ class Profile extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                  padding: EdgeInsets.only(top: 175),
+                  padding: const EdgeInsets.only(top: 175),
                   child: TextWidget(t: GetProfile.userName() ?? 'noBody', w: FontWeight.bold, c: Colors.white, z: 22),
                 ),
               )
@@ -65,7 +64,7 @@ class Profile extends StatelessWidget {
                               Expanded(
                                 child: Container(
                                   height: 100,
-                                  margin: EdgeInsets.only(bottom: 10),
+                                  margin: const EdgeInsets.only(bottom: 10),
                                   decoration: BoxDecoration(
                                     color: Colors.amber,
                                     image: DecorationImage(
@@ -77,13 +76,13 @@ class Profile extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 2),
+                              const SizedBox(height: 2),
                               SizedBox(
                                 height: 25,
                                 child: TextWidget(t: e.title, c: Colors.grey.shade800, z: 18, w: FontWeight.bold),
                               ),
                               TextWidget(t: e.author, c: Colors.grey[600], z: 14, w: FontWeight.normal),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               SizedBox(
                                 width: 109,
                                 child: RatingStarsWidget(rate: e.rating, size: 19),
@@ -95,11 +94,9 @@ class Profile extends StatelessWidget {
                   .toList(),
             ),
           ),
-          SizedBox(
-            height: 80,
-          ),
+          const SizedBox(height: 80),
           Container(
-            margin: EdgeInsets.only(bottom: 35),
+            margin: const EdgeInsets.only(bottom: 35),
             width: 115,
             height: 36,
             child: TextButton(
@@ -108,10 +105,7 @@ class Profile extends StatelessWidget {
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(9),
-                    side: BorderSide(
-                      color: Colors.amber,
-                      width: 2,
-                    ),
+                    side: const BorderSide(color: Colors.amber, width: 2),
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all(

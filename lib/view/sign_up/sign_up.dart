@@ -2,17 +2,11 @@ import 'package:book_store/Text_fields/number_text_fields.dart';
 import 'package:book_store/common/MyButtonText.dart';
 import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/bordered_container.dart';
-import 'package:book_store/common/navbar.dart';
 import 'package:book_store/common/snakBar.dart';
 import 'package:book_store/services/backed_services/auth.dart';
 import 'package:book_store/view/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:book_store/utilz/theme.dart';
-import 'package:flutter/rendering.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:book_store/Text_fields/Text_field.dart';
-
-import '../home/home.dart';
 
 class Signup extends StatelessWidget {
   Signup({

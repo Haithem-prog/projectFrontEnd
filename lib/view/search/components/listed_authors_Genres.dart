@@ -1,8 +1,6 @@
 import 'package:book_store/models/authors_genres_model_listes.dart';
 import 'package:book_store/services/authors_genres_list_condition.dart';
 import 'package:book_store/common/search_in_desired_books.dart';
-import 'package:book_store/services/backed_services/get_books_by_author.dart';
-import 'package:book_store/services/backed_services/get_books_by_geners.dart';
 import 'package:book_store/services/search_books_condition.dart';
 import 'package:book_store/view/search/components/search_box.dart';
 import 'package:book_store/view/search/components/swapper.dart';

@@ -15,7 +15,7 @@ class MySwapper extends StatelessWidget {
         const Spacer(flex: 1),
         Container(
             width: 150,
-            margin: EdgeInsets.only(top: 26, bottom: 0),
+            margin: const EdgeInsets.only(top: 26, bottom: 0),
             child: SizedBox(
               height: 80,
               child: Obx(() {
@@ -43,7 +43,7 @@ class MySwapper extends StatelessWidget {
         Container(
             width: 150,
             height: 80,
-            margin: EdgeInsets.only(top: 26, bottom: 0),
+            margin: const EdgeInsets.only(top: 26, bottom: 0),
             child: Obx(() {
               return TextButton(
                 onPressed: () {

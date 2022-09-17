@@ -27,7 +27,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     GetPersonalCart.getCartItems();
     GetSavedBooks.getAllSavedBooks();
-    Size size = MediaQuery.of(context).size;
     GetPersonalCartBooksAndTotals.getCart();
     GetTopSellerRatedNewArrival.changeLists();
     return Scaffold(
@@ -54,7 +53,7 @@ class _HomeState extends State<Home> {
                           style: GoogleFonts.cairo(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                         GestureDetector(
-                          onTap: () => Get.to(() => Profile()),
+                          onTap: () => Get.to(() =>  Profile()),
                           child: SvgPicture.asset(
                             'assets/images/profile.svg',
                             color: Colors.white,

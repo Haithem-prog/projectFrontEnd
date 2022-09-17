@@ -64,7 +64,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                         children: [
                           Container(
                             width: 280,
-                            margin: EdgeInsets.only(right: 10),
+                            margin: const EdgeInsets.only(right: 10),
                             child: Text(
                               widget.book.title.toString(),
                               style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.w400, textStyle: TextStyle(overflow: TextOverflow.clip, height: 1)),
@@ -144,7 +144,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                                 child: Row(
                                   children: [
                                     Text('QTY', style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.bold)),
-                                    Spacer(),
+                                    const Spacer(),
                                     IconButton(
                                         onPressed: () {
                                           setState(() {
@@ -155,7 +155,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                                             }
                                           });
                                         },
-                                        icon: Icon(Icons.remove)),
+                                        icon: const Icon(Icons.remove)),
                                     Text(
                                       quantity.toString(),
                                       style: GoogleFonts.barlow(fontSize: 20),
@@ -166,7 +166,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                                             quantity = quantity + 1;
                                           });
                                         },
-                                        icon: Icon(Icons.add)),
+                                        icon: const Icon(Icons.add)),
                                   ],
                                 ),
                               ),

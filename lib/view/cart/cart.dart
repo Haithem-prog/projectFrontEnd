@@ -30,7 +30,7 @@ class _CartState extends State<Cart> {
           children: [
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(top: 60, left: 10, right: 10),
+                padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
                 child: ListView(
                   children: CartModel.cartBookList
                       .map((e) => TextButton(
@@ -46,7 +46,7 @@ class _CartState extends State<Cart> {
                               child: Row(children: [
                                 Container(
                                   width: 105,
-                                  margin: EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                                  margin: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
                                   decoration: BoxDecoration(
                                     color: Colors.amber,
                                     image: DecorationImage(
@@ -59,12 +59,11 @@ class _CartState extends State<Cart> {
                                 ),
                                 Expanded(
                                   child: Container(
-//                                color: Colors.black54,
-                                    padding: EdgeInsets.only(top: 14, left: 15, bottom: 10),
+                                    padding: const EdgeInsets.only(top: 14, left: 15, bottom: 10),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        SizedBox(height: 2),
+                                        const SizedBox(height: 2),
                                         SizedBox(
                                           height: 30,
                                           child: TextWidget(t: e.title, c: Colors.grey.shade800, z: 23, w: FontWeight.bold),
@@ -75,14 +74,14 @@ class _CartState extends State<Cart> {
                                           z: 20,
                                           w: FontWeight.normal,
                                         ),
-                                        SizedBox(height: 7),
+                                        const SizedBox(height: 7),
                                         TextWidget(
                                           t: e.price.toString() + '\$',
                                           c: Colors.black,
                                           z: 16,
                                           w: FontWeight.w500,
                                         ),
-                                        SizedBox(height: 10),
+                                        const SizedBox(height: 10),
                                         TextWidget(
                                           t: e.qty.toString() + ' Pcs',
                                           c: Colors.black,
@@ -102,7 +101,7 @@ class _CartState extends State<Cart> {
                                       await ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: GetPersonalCart.message));
                                       setState(() {});
                                     },
-                                    icon: Icon(Icons.remove_circle_outline))
+                                    icon: const Icon(Icons.remove_circle_outline))
                               ]),
                             ),
                           ))
@@ -122,7 +121,7 @@ class _CartState extends State<Cart> {
               ),
               child: Column(
                 children: [
-                  SizedBox(height: 45),
+                  const SizedBox(height: 45),
                   Container(
                     color: AppTheme.mainColor,
                     height: 50,
@@ -136,7 +135,7 @@ class _CartState extends State<Cart> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Container(
                     color: AppTheme.mainColor,
                     height: 50,
@@ -151,7 +150,7 @@ class _CartState extends State<Cart> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 13),
+                    margin: const EdgeInsets.only(top: 13),
                     width: 150,
                     height: 50,
                     child: TextButton(
@@ -160,10 +159,7 @@ class _CartState extends State<Cart> {
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9),
-                            side: BorderSide(
-                              color: AppTheme.mainColor,
-                              width: 2,
-                            ),
+                            side: const BorderSide(color: AppTheme.mainColor, width: 2),
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(

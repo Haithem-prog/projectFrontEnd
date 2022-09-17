@@ -9,8 +9,6 @@ import 'package:book_store/services/saved_books_condiction.dart';
 import 'package:book_store/services/top_seller_rated_new_arrival_books_condition.dart';
 import 'package:book_store/view/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
-import 'package:book_store/utilz/theme.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:book_store/Text_fields/Text_field.dart';
 
 class Signin extends StatelessWidget {
@@ -43,7 +41,7 @@ class Signin extends StatelessWidget {
               TextWidget(t: 'Phone Number', w: FontWeight.w500, c: Colors.grey[700], z: 18),
               SizedBox(height: 50, child: MyTextFieldnum(controller: phoneNumber)),
               const SizedBox(height: 24),
-              TextWidget(t: 'Password       ', w: FontWeight.w500, c: Colors.grey[700], z: 18),
+              TextWidget(t: 'Password ', w: FontWeight.w500, c: Colors.grey[700], z: 18),
               SizedBox(height: 50, child: MyTextField(controller: passwords, isSecure: true)),
             ],
           ),
@@ -52,7 +50,6 @@ class Signin extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10),
           child: TextButton(
             onPressed: () async {
-              
               await AuthService().signIn(phoneNumber: phoneNumber.text, password: passwords.text);
               ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: AuthService.signInMessage));
               await Future.delayed(Duration(seconds: 1));

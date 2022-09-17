@@ -11,7 +11,6 @@ class SearchBox extends StatelessWidget {
   static TextEditingController myController1 = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    bool goToAll;
     return Container(
       height: 55,
       decoration: BoxDecoration(
@@ -20,7 +19,7 @@ class SearchBox extends StatelessWidget {
       ),
       child: TextField(
         controller: myController1,
-        onSubmitted: (value) => Get.to(() => SearchInDesiredBooks(searchInAll: true, generName: '', authorName: '')),
+        onSubmitted: (value) => Get.to(() => const SearchInDesiredBooks(searchInAll: true, generName: '', authorName: '')),
         onTap: () {
           SearchBox.searchWord.value = myController1.text;
         },
@@ -41,7 +40,7 @@ class SearchBox extends StatelessWidget {
                     SearchBox.searchWord = ''.obs;
                     ChangeSearchList.changeList(searchByAll: true);
                     await ChangeSearchList.changeList(searchByAll: true);
-                    Get.to(() => SearchInDesiredBooks(searchInAll: true, generName: '', authorName: ''));
+                    Get.to(() => const SearchInDesiredBooks(searchInAll: true, generName: '', authorName: ''));
                   }
                 }),
             hintText: text,
