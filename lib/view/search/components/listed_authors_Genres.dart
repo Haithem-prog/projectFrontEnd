@@ -55,9 +55,9 @@ class ListedAuthorsGenres extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Container(margin: const EdgeInsets.only(bottom: 25, left: 40, right: 40), decoration: BoxDecoration(
+                          child: Container(margin: const EdgeInsets.only(bottom: 25, left: 20, right: 20), decoration: BoxDecoration(
                               //color: Colors.red,
-                              boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.4), spreadRadius: 4, blurRadius: 5, offset: const Offset(0, 5))], image: DecorationImage(image: NetworkImage(e.imageUrl), fit: BoxFit.fill), borderRadius: BorderRadius.circular(7))),
+                              boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.4), spreadRadius: 4, blurRadius: 5, offset: const Offset(0, 5))], image: DecorationImage(image: NetworkImage(e.imageUrl), fit: BoxFit.cover), borderRadius: BorderRadius.circular(7))),
                         ),
                       ],
                     ),
