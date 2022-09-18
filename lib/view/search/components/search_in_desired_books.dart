@@ -10,7 +10,7 @@ import 'package:book_store/services/search_books_condition.dart';
 import 'package:book_store/view/search/components/search_box.dart';
 import 'package:book_store/models/default_book_Model.dart';
 import 'package:book_store/utilz/theme.dart';
-import 'package:book_store/view/home/book_details_screen.dart';
+import 'package:book_store/common/book_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,9 +35,7 @@ class _SearchInDesiredBooksState extends State<SearchInDesiredBooks> {
 
   @override
   Widget build(BuildContext context) {
-    //savedBookids = GetSavedBooks.savedBooksIds;
     Size size = MediaQuery.of(context).size; //subrashi
-    Rx<bool> saveStatus = true.obs;
     ChangeSearchList.changeList(authorName: widget.authorName, generName: widget.generName, searchByAll: widget.searchInAll);
     return GestureDetector(
       onTap: () {
@@ -48,7 +46,7 @@ class _SearchInDesiredBooksState extends State<SearchInDesiredBooks> {
         body: Column(children: [
           const SizedBox(height: 65),
           Padding(
-            padding: EdgeInsets.only(left: 15, right: 15),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: SearchBox(text: widget.authorName!.isEmpty ? 'Search in ${widget.generName} books...' : 'Search books written by ${widget.authorName}...'),
           ),
           const SizedBox(height: 40),
@@ -60,7 +58,11 @@ class _SearchInDesiredBooksState extends State<SearchInDesiredBooks> {
                 children: BookModel.defaultBookList
                     .where((element) => filterSearchFunction(element, SearchBox.searchWord.value))
                     .map((e) => TextButton(
-                          onPressed: () => Get.to(() => BookDetailsScreen(book: e)),
+                          onPressed: () async {
+                            await GetSavedBooks.getAllSavedBooks();
+                            BookDetailsScreen.saved = GetSavedBooks.savedBooksIds!.contains(e.id);
+                            Get.to(() => BookDetailsScreen(book: e));
+                          },
                           child: Container(
                             width: size.width,
                             height: 165,
@@ -81,7 +83,7 @@ class _SearchInDesiredBooksState extends State<SearchInDesiredBooks> {
                                 ),
                                 Expanded(
                                   child: Container(
-                                    padding: EdgeInsets.only(top: 14, left: 15, bottom: 10),
+                                    padding: const EdgeInsets.only(top: 14, left: 15, bottom: 10),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,26 +101,27 @@ class _SearchInDesiredBooksState extends State<SearchInDesiredBooks> {
                                             size: 19,
                                           ),
                                         ),
-                                        SizedBox(
+                                        Container(
+                                          margin: const EdgeInsets.only(bottom: 10),
                                           height: 35,
                                           child: Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(
-                                                margin: EdgeInsets.only(top: 6),
+                                                margin: const EdgeInsets.only(top: 6, left: 4.5),
                                                 width: 100,
                                                 height: 30,
                                                 child: TextButton(
                                                   onPressed: () async {
                                                     await GetPersonalCart.addItemToCart(e.id, 1, false);
                                                     await GetPersonalCartBooksAndTotals.getCart();
-                                                    ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: '1 ' + GetPersonalCart.message));
+                                                    ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: GetPersonalCart.message));
                                                   },
                                                   style: ButtonStyle(
                                                     shape: MaterialStateProperty.all(
                                                       RoundedRectangleBorder(
                                                         borderRadius: BorderRadius.circular(9),
-                                                        side: BorderSide(
+                                                        side: const BorderSide(
                                                           color: AppTheme.mainColor,
                                                           width: 2,
                                                         ),
@@ -132,7 +135,7 @@ class _SearchInDesiredBooksState extends State<SearchInDesiredBooks> {
                                                 ),
                                               ),
                                               Container(
-                                                margin: EdgeInsets.only(bottom: 6),
+                                                margin: const EdgeInsets.only(bottom: 6),
                                                 child: IconButton(
                                                   iconSize: 30,
                                                   color: const Color(0xffE9C46A),

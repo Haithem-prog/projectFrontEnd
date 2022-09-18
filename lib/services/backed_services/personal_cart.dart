@@ -15,7 +15,7 @@ class GetPersonalCart {
   static getCartItems() async {
     id = AuthService.id;
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_personal_cart/$id',
+      response = await dio.get('http://10.0.2.2:8000/api/get_personal_cart_items/$id',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
@@ -24,7 +24,6 @@ class GetPersonalCart {
       } else {
         thereIsItems = true;
         cartBody = response.data;
-        print(cartBody[1]['qty']);
       }
     } catch (e) {
       print(e);
@@ -58,10 +57,22 @@ class GetPersonalCart {
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
-
       message = response.data['msg'];
     } catch (e) {
       print(e);
     }
   }
+
+  static buyItemsInCart() async {
+    try {
+      response = await dio.get('http://10.0.2.2:8000/api/Buy_items/$id',
+          options: Options(
+            headers: {"authorization": "Bearer $token"},
+          ));
+      message = response.data['msg'];
+    } catch (e) {
+      print(e);
+    }
+  }
+
 }

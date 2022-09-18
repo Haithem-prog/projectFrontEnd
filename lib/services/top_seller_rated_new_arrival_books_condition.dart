@@ -24,7 +24,6 @@ class GetTopSellerRatedNewArrival {
       ));
     }
 
-    refresh.value = 1;
     await GetTopRatedBooks.getBooks();
     List<dynamic> data1 = GetTopRatedBooks.booksBody;
     BookModel.topRatedBookList = [];
@@ -44,7 +43,6 @@ class GetTopSellerRatedNewArrival {
       ));
     }
 
-    refresh.value = 0;
     await GetTopSellerBooks.getBooks();
     List<dynamic> data2 = GetTopSellerBooks.booksBody;
     BookModel.topSellerBookList = [];
@@ -63,92 +61,5 @@ class GetTopSellerRatedNewArrival {
       ));
     }
 
-    refresh.value = 2;
   }
 }
-
-
-
-    // BookModel.newArrivalBookList = [
-    //   BookModel(
-    //     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp2hmVoM_vMrFcJOTuQrhq0GQgrDCMlhLv3ei54PHq&s',
-    //     rating: 4,
-    //     title: '   ddddddd   dddسييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييييي ييييييييddddddddddddddddddddddddddd',
-    //     author: 'NEW',
-    //     description: 'idkjndlkdjfnv;kjn',
-    //     price: 5,
-    //     id: 0,
-    //     language: '',
-    //     pages: 2,
-    //   ),
-    //   BookModel(
-    //     imageUrl: 'https://images.unsplash.com/photo-1566275529824-cca6d008f3da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGhvdG98ZW58MHx8MHx8&w=1000&q=80',
-    //     rating: 5,
-    //     title: ' ddddd dddddddddddddd dddddddddddd',
-    //     author: 'NEW',
-    //     description: '2',
-    //     price: 5,
-    //     language: 'English',
-    //     id: 0,
-    //     pages: 2,
-    //   ),
-    //   BookModel(
-    //     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-JUjJifI_U5X-Fp_G1fEdrYozUuK4j0FgkBbIfKE&s',
-    //     rating: 5,
-    //     title: 'how is FAIR',
-    //     author: 'NEW',
-    //     description: '2',
-    //     price: 5,
-    //     language: 'English',
-    //     id: 0,
-    //     pages: 2,
-    //   ),
-    // ];
- // BookModel.topRatedBookList = [
-    //   BookModel(
-    //     imageUrl: 'https://images.unsplash.com/photo-1600885832003-1b612b431f7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHJlc3R8ZW58MHx8MHx8&w=1000&q=80',
-    //     rating: 4,
-    //     title: 'TOP',
-    //     author: 'TOP',
-    //     description: 'idkjndlkdjfnv;kjn',
-    //     price: 5,
-    //     id: 0,
-    //     language: '',
-    //     pages: 2,
-    //   ),
-    //   BookModel(
-    //     imageUrl: 'https://images.unsplash.com/photo-1600885832003-1b612b431f7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHJlc3R8ZW58MHx8MHx8&w=1000&q=80',
-    //     rating: 5,
-    //     title: 'TOP',
-    //     author: 'TOP',
-    //     description: '2',
-    //     price: 5,
-    //     language: 'English',
-    //     id: 0,
-    //     pages: 2,
-    //   ),
-    // ];
-// BookModel.topSellerBookList = [
-    //   BookModel(
-    //     imageUrl: 'https://i.pinimg.com/564x/60/53/71/60537197052b1e259dda1c379a91b545.jpg',
-    //     rating: 4,
-    //     title: 'TOP',
-    //     author: 'TOP',
-    //     description: 'idkjndlkdjfnv;kjn',
-    //     price: 5,
-    //     id: 0,
-    //     language: '',
-    //     pages: 2,
-    //   ),
-    //   BookModel(
-    //     imageUrl: 'https://i.pinimg.com/564x/60/53/71/60537197052b1e259dda1c379a91b545.jpg',
-    //     rating: 5,
-    //     title: 'TOP',
-    //     author: 'TOP',
-    //     description: '2',
-    //     price: 5,
-    //     language: 'English',
-    //     id: 0,
-    //     pages: 2,
-    //   ),
-    // ];

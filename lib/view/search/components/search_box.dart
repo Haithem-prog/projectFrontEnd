@@ -1,4 +1,4 @@
-import 'package:book_store/common/search_in_desired_books.dart';
+import 'package:book_store/view/search/components/search_in_desired_books.dart';
 import 'package:book_store/services/search_books_condition.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,7 +38,6 @@ class SearchBox extends StatelessWidget {
                   SearchBox.searchWord.value = myController1.text;
                   if (allBooksCondiction == true) {
                     SearchBox.searchWord = ''.obs;
-                    ChangeSearchList.changeList(searchByAll: true);
                     await ChangeSearchList.changeList(searchByAll: true);
                     Get.to(() => const SearchInDesiredBooks(searchInAll: true, generName: '', authorName: ''));
                   }

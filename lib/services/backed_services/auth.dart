@@ -6,6 +6,8 @@ class AuthService {
   late Response response;
   static late String signUpMessage;
   static late String signInMessage;
+  static late String name;
+  static late String phone;
   static late int statusCode;
   static late String token;
   static late int id;
@@ -39,6 +41,8 @@ class AuthService {
         AuthService.id = body['id'];
         AuthService.token = body['token'];
         AuthService.signInMessage = body['detail'];
+        AuthService.name = body['name'];
+        AuthService.phone = body['phone'];
         AuthService.statusCode = response.statusCode!;
       }
     } catch (e) {

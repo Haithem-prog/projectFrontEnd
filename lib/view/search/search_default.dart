@@ -1,3 +1,4 @@
+import 'package:book_store/services/backed_services/personal_cart.dart';
 import 'package:book_store/services/search_books_condition.dart';
 import 'package:book_store/view/search/components/search_box.dart';
 import 'package:book_store/models/authors_genres_model_listes.dart';
@@ -11,7 +12,9 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthorsGenresModel.initialList();
-     ChangeSearchList.changeList( searchByAll: true);
+    print('search');
+    //GetPersonalCart.getCartItems();
+     //ChangeSearchList.changeList( searchByAll: true);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(

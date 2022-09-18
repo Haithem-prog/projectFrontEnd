@@ -3,8 +3,10 @@ import 'package:book_store/common/snakBar.dart';
 import 'package:book_store/models/default_book_Model.dart';
 import 'package:book_store/services/backed_services/personal_cart.dart';
 import 'package:book_store/services/personal_cart_condition.dart';
+import 'package:book_store/services/purchased_books_condition.dart';
+import 'package:book_store/services/saved_books_condiction.dart';
 import 'package:book_store/utilz/theme.dart';
-import 'package:book_store/view/home/book_details_screen.dart';
+import 'package:book_store/common/book_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,23 +32,27 @@ class _CartState extends State<Cart> {
           children: [
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 60, left: 10, right: 10),
+                padding: const EdgeInsets.only(top: 50),
                 child: ListView(
+                  padding: EdgeInsets.all(1),
                   children: CartModel.cartBookList
                       .map((e) => TextButton(
-                            onPressed: () => Get.to(() => BookDetailsScreen(book: e)),
+                            onPressed: () {
+                              BookDetailsScreen.saved = GetSavedBooks.savedBooksIds!.contains(e.id);
+                              Get.to(() => BookDetailsScreen(book: e));
+                            },
                             child: Container(
                               width: size.width,
-                              height: 145,
+                              height: 160,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(15),
                                 boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.3), blurRadius: 2, spreadRadius: 1.5, offset: Offset(0, 1))],
                               ),
                               child: Row(children: [
                                 Container(
                                   width: 105,
-                                  margin: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                                  margin: const EdgeInsets.only(top: 5, bottom: 5, left: 7),
                                   decoration: BoxDecoration(
                                     color: Colors.amber,
                                     image: DecorationImage(
@@ -63,15 +69,20 @@ class _CartState extends State<Cart> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        const SizedBox(height: 2),
+                                        const SizedBox(height: 8),
                                         SizedBox(
                                           height: 30,
-                                          child: TextWidget(t: e.title, c: Colors.grey.shade800, z: 23, w: FontWeight.bold),
+                                          child: TextWidget(
+                                            t: e.title,
+                                            c: Colors.grey.shade800,
+                                            z: 20,
+                                            w: FontWeight.bold,
+                                          ),
                                         ),
                                         TextWidget(
                                           t: e.author,
-                                          c: Colors.black,
-                                          z: 20,
+                                          c: Colors.grey[600],
+                                          z: 17,
                                           w: FontWeight.normal,
                                         ),
                                         const SizedBox(height: 7),
@@ -85,7 +96,7 @@ class _CartState extends State<Cart> {
                                         TextWidget(
                                           t: e.qty.toString() + ' Pcs',
                                           c: Colors.black,
-                                          z: 16,
+                                          z: 15,
                                           w: FontWeight.w500,
                                         ),
                                       ],
@@ -110,7 +121,7 @@ class _CartState extends State<Cart> {
               ),
             ),
             Container(
-              height: 250,
+              height: 210,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -124,7 +135,7 @@ class _CartState extends State<Cart> {
                   const SizedBox(height: 45),
                   Container(
                     color: AppTheme.mainColor,
-                    height: 50,
+                    height: 40,
                     width: size.width,
                     child: Center(
                       child: TextWidget(
@@ -138,7 +149,7 @@ class _CartState extends State<Cart> {
                   const SizedBox(height: 20),
                   Container(
                     color: AppTheme.mainColor,
-                    height: 50,
+                    height: 40,
                     width: size.width,
                     child: Center(
                       child: TextWidget(
@@ -152,9 +163,15 @@ class _CartState extends State<Cart> {
                   Container(
                     margin: const EdgeInsets.only(top: 13),
                     width: 150,
-                    height: 50,
+                    height: 45,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await GetPersonalCart.buyItemsInCart();
+                        await GetPersonalCartBooksAndTotals.getCart();
+                        await GetPurchasedBooks.getAllPurchasedBooks();
+                        ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: GetPersonalCart.message));
+                        setState(() {});
+                      },
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(

@@ -39,35 +39,3 @@ class ChangeShowedList {
 
 
 
-      // AuthorsGenresModel.authorsAndGenersList = [
-      //   AuthorsGenresModel(
-      //     imageUrl: 'https://m.media-amazon.com/images/I/41gr3r3FSWL.jpg',
-      //     name: 'Author1 ahmed',
-      //   ),
-      //   AuthorsGenresModel(
-      //     imageUrl: 'https://media.istockphoto.com/vectors/abstract-minimal-geometric-circle-background-for-business-annual-vector-id1210701957?k=20&m=1210701957&s=612x612&w=0&h=FcOUXSrxlHnJztn-U_JSQ0X-VyyUtLKRV4QXSHfprvs=',
-      //     name: 'Author2 ali andul hissiedn',
-      //   ),
-      // ];
-      // AuthorsGenresModel.authorsAndGenersList = [
-      //   AuthorsGenresModel(
-      //     imageUrl: 'https://m.media-amazon.com/images/I/41gr3r3FSWL.jpg',
-      //     name: 'Tragic',
-      //   ),
-      //   AuthorsGenresModel(
-      //     imageUrl: 'https://media.istockphoto.com/vectors/abstract-minimal-geometric-circle-background-for-business-annual-vector-id1210701957?k=20&m=1210701957&s=612x612&w=0&h=FcOUXSrxlHnJztn-U_JSQ0X-VyyUtLKRV4QXSHfprvs=',
-      //     name: 'Funny',
-      //   ),
-      //   AuthorsGenresModel(
-      //     imageUrl: 'https://m.media-amazon.com/images/I/41gr3r3FSWL.jpg',
-      //     name: 'Supernatural',
-      //   ),
-      //   AuthorsGenresModel(
-      //     imageUrl: 'https://m.media-amazon.com/images/I/41gr3r3FSWL.jpg',
-      //     name: 'Supernatural',
-      //   ),
-      //   AuthorsGenresModel(
-      //     imageUrl: 'https://m.media-amazon.com/images/I/41gr3r3FSWL.jpg',
-      //     name: 'Supernatural',
-      //   ),
-      // ];

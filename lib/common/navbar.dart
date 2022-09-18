@@ -9,7 +9,7 @@ import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
 class Demonav extends StatelessWidget {
   const Demonav({Key? key}) : super(key: key);
-
+  //static int? index;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,8 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
           waterDropColor: Color(0xff073b4c),
           backgroundColor: navigationBarColor,
           onItemSelected: (int index) {
+            selectedIndex = index;
             setState(() {
-              selectedIndex = index;
+              //Demonav.index = index;
+              
             });
             pageController.animateToPage(selectedIndex, duration: const Duration(milliseconds: 300), curve: Curves.easeOutQuad);
           },

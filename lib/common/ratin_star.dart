@@ -8,14 +8,12 @@ class RatingStarsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return Container(
-      child: RatingStars(
-          editable: true,
-          rating: rate,
-          color: Colors.amber,
-          iconSize: size,
-        ),
-    );
+    return RatingStars(
+        editable: true,
+        rating: rate,
+        color: Colors.amber,
+        iconSize: size,
+      );
     
   }
 }

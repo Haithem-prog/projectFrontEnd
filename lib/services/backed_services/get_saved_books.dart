@@ -22,6 +22,7 @@ class GetSaved {
       } else {
         noSavedBook = false;
       }
+      print('saved');
     } catch (e) {
       print(e);
     }

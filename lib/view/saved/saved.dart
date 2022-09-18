@@ -1,10 +1,13 @@
 import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/ratin_star.dart';
+import 'package:book_store/common/snakBar.dart';
 import 'package:book_store/models/default_book_Model.dart';
+import 'package:book_store/services/backed_services/personal_cart.dart';
 import 'package:book_store/services/backed_services/save_unsave.dart';
+import 'package:book_store/services/personal_cart_condition.dart';
 import 'package:book_store/services/saved_books_condiction.dart';
 import 'package:book_store/utilz/theme.dart';
-import 'package:book_store/view/home/book_details_screen.dart';
+import 'package:book_store/common/book_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +21,6 @@ class Saved extends StatefulWidget {
 class _SavedState extends State<Saved> {
   @override
   Widget build(BuildContext context) {
-    GetSavedBooks.getAllSavedBooks();
     Size size = MediaQuery.of(context).size; //subrashi
     return Scaffold(
       backgroundColor: Colors.white,
@@ -28,7 +30,10 @@ class _SavedState extends State<Saved> {
         child: ListView(
           children: BookModel.savedBookList
               .map((e) => TextButton(
-                    onPressed: () => Get.to(() => BookDetailsScreen(book: e)),
+                    onPressed: () async {
+                      BookDetailsScreen.saved = GetSavedBooks.savedBooksIds!.contains(e.id);
+                      Get.to(() => BookDetailsScreen(book: e));
+                    },
                     child: Container(
                       width: size.width,
                       height: 165,
@@ -74,7 +79,11 @@ class _SavedState extends State<Saved> {
                                           width: 100,
                                           height: 30,
                                           child: TextButton(
-                                            onPressed: () {},
+                                            onPressed: () async {
+                                              await GetPersonalCart.addItemToCart(e.id, 1, false);
+                                              await GetPersonalCartBooksAndTotals.getCart();
+                                              ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message:  GetPersonalCart.message));
+                                            },
                                             style: ButtonStyle(
                                               shape: MaterialStateProperty.all(
                                                 RoundedRectangleBorder(
@@ -101,6 +110,7 @@ class _SavedState extends State<Saved> {
                                               } else if (e.saved == false) {
                                                 await SaveUnsave.saveUnsaveBook(e.id, true);
                                               }
+                                              ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message:SaveUnsave.message));
                                               await GetSavedBooks.getAllSavedBooks();
                                               setState(() {});
                                             },

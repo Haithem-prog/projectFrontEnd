@@ -1,10 +1,12 @@
 import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/ratin_star.dart';
 import 'package:book_store/models/default_book_Model.dart';
+import 'package:book_store/services/backed_services/auth.dart';
 import 'package:book_store/services/profile_condition.dart';
 import 'package:book_store/services/purchased_books_condition.dart';
-import 'package:book_store/view/home/book_details_screen.dart';
+import 'package:book_store/common/book_details_screen.dart';
 import 'package:book_store/view/home/shape.dart';
+import 'package:book_store/view/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -39,7 +41,7 @@ class Profile extends StatelessWidget {
               Center(
                 child: Container(
                   padding: const EdgeInsets.only(top: 175),
-                  child: TextWidget(t: GetProfile.userName() ?? 'noBody', w: FontWeight.bold, c: Colors.white, z: 22),
+                  child: TextWidget(t: AuthService.name, w: FontWeight.bold, c: Colors.white, z: 22),
                 ),
               )
             ],
@@ -63,7 +65,7 @@ class Profile extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Container(
-                                  height: 100,
+                                  height: 170,
                                   margin: const EdgeInsets.only(bottom: 10),
                                   decoration: BoxDecoration(
                                     color: Colors.amber,
@@ -94,9 +96,9 @@ class Profile extends StatelessWidget {
                   .toList(),
             ),
           ),
-          const SizedBox(height: 80),
+          const SizedBox(height: 13),
           Container(
-            margin: const EdgeInsets.only(bottom: 35),
+            margin: const EdgeInsets.only(bottom: 10),
             width: 115,
             height: 36,
             child: TextButton(

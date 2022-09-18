@@ -1,10 +1,11 @@
+import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/ratin_star.dart';
-import 'package:book_store/view/home/book_details_screen.dart';
+import 'package:book_store/common/book_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../models/default_book_Model.dart';
+import '../../../models/default_book_Model.dart';
 
 class NewArrivalSliderItems extends StatelessWidget {
   final BookModel book;
@@ -43,36 +44,33 @@ class NewArrivalSliderItems extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 10),
-                    Container(
-                      width: 160,
-                      margin: EdgeInsets.only(right: 10),
-                      child: Text(book.title.toString(), style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.w400, textStyle: TextStyle(overflow: TextOverflow.ellipsis, height: 2))),
-                    ),
-                    Text(
-                      book.author,
-                      style: GoogleFonts.cairo(color: const Color.fromARGB(166, 0, 0, 0), fontSize: 18, fontWeight: FontWeight.normal),
-                    ),
-                    const SizedBox(height: 8),
-                    RatingStarsWidget(size: 20, rate: book.rating),
-                    const SizedBox(height: 8),
-                    Text(
-                      '${book.price.toString()}\$',
-                      style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.w400),
-                    ),
-                    Text(
-                      'Tap to see more >>',
-                      style: GoogleFonts.cairo(
-                        color: Colors.black54,
-                        fontSize: 16,
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 10),
+                      Container(
+                        width: 160,
+                        margin: EdgeInsets.only(right: 10, top: 10, bottom: 10),
+                        child: TextWidget(t: book.title, c: Colors.black, z: 22, w: FontWeight.w400),
                       ),
-                    )
-                  ],
+                      TextWidget(t: book.author, c: Colors.grey[600], z: 17, w: FontWeight.normal),
+                      const SizedBox(height: 8),
+                      SizedBox(width: 108, child: RatingStarsWidget(size: 20, rate: book.rating)),
+                      const SizedBox(height: 8),
+                      TextWidget(t: '${book.price.toString()}\$', c: Colors.black, z: 17, w: FontWeight.w400),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Tap to see more >>',
+                        style: GoogleFonts.cairo(
+                          color: Colors.black54,
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

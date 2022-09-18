@@ -1,10 +1,13 @@
 import 'package:book_store/Text_fields/number_text_fields.dart';
 import 'package:book_store/common/MyButtonText.dart';
+import 'package:book_store/common/MyNavBar.dart';
 import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/bordered_container.dart';
 import 'package:book_store/common/navbar.dart';
 import 'package:book_store/common/snakBar.dart';
 import 'package:book_store/services/backed_services/auth.dart';
+import 'package:book_store/services/backed_services/get_profile.dart';
+import 'package:book_store/services/purchased_books_condition.dart';
 import 'package:book_store/services/saved_books_condiction.dart';
 import 'package:book_store/services/top_seller_rated_new_arrival_books_condition.dart';
 import 'package:book_store/view/sign_up/sign_up.dart';
@@ -56,7 +59,8 @@ class Signin extends StatelessWidget {
               if (AuthService.statusCode == 200) {
                 await GetSavedBooks.getAllSavedBooks();
                 await GetTopSellerRatedNewArrival.changeLists();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Demonav()));
+                await GetPurchasedBooks.getAllPurchasedBooks();
+                Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNav()));
               }
             },
             child: const BorderedContainer(child: MyButtonText(text: 'Sign in')),
