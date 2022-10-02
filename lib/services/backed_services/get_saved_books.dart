@@ -12,7 +12,7 @@ class GetSaved {
   static getSavedBooks() async {
     id = AuthService.id;
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_all_saved_books/$id',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_all_saved_books/$id',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
@@ -22,9 +22,8 @@ class GetSaved {
       } else {
         noSavedBook = false;
       }
-      print('saved');
     } catch (e) {
-      print(e);
+      return(e);
     }
   }
 }

@@ -10,13 +10,13 @@ class GetAllGenres {
   static late List<dynamic> genresBody;
   static getGenres() async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_all_genres',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_all_genres',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
       genresBody = response.data;
     } catch (e) {
-      print(e) ;
+      return(e) ;
     }
   }
 }

@@ -1,6 +1,5 @@
 import 'package:book_store/common/Texts.dart';
 import 'package:book_store/common/snakBar.dart';
-import 'package:book_store/services/backed_services/get_all_books.dart';
 import 'package:book_store/services/backed_services/personal_cart.dart';
 import 'package:book_store/services/backed_services/save_unsave.dart';
 import 'package:book_store/services/personal_cart_condition.dart';
@@ -8,7 +7,9 @@ import 'package:book_store/services/saved_books_condiction.dart';
 import 'package:book_store/services/search_books_condition.dart';
 import 'package:book_store/services/top_seller_rated_new_arrival_books_condition.dart';
 import 'package:book_store/view/home/home.dart';
+import 'package:book_store/view/saved/saved.dart';
 import 'package:book_store/view/search/components/search_in_desired_books.dart';
+import 'package:book_store/view/search/search_default.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,8 +17,12 @@ import '../models/default_book_Model.dart';
 import '../utilz/theme.dart';
 
 class BookDetailsScreen extends StatefulWidget {
-  const BookDetailsScreen({Key? key, required this.book}) : super(key: key);
+  const BookDetailsScreen({Key? key, required this.book, this.searchByAll, this.genreName, this.authorName, this.toggleSearch = false}) : super(key: key);
   final BookModel book;
+  final bool? searchByAll;
+  final String? genreName;
+  final String? authorName;
+  final bool toggleSearch;
   static bool? saved;
 
   @override
@@ -35,6 +40,11 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
           Home.refresh.value = false;
         } else {
           Home.refresh.value = true;
+        }
+        if (Saved.refreshSaved.value) {
+          Saved.refreshSaved.value = false;
+        } else {
+          Saved.refreshSaved.value = true;
         }
         return true;
       },
@@ -105,7 +115,11 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                                   await GetSavedBooks.getAllSavedBooks();
                                   BookDetailsScreen.saved = GetSavedBooks.savedBooksIds!.contains(widget.book.id);
                                   ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: SaveUnsave.message));
-
+                                  if (widget.toggleSearch == true) {
+                                    await ChangeSearchList.changeList(searchByAll: widget.searchByAll, authorName: widget.authorName, generName: widget.genreName);
+                                  }
+                                  Saved.refreshSaved.value = true;
+                                  SearchInDesiredBooks.refreshBopks.value = true;
                                   setState(() {});
                                 },
                                 icon: BookDetailsScreen.saved! ? const Icon(Icons.bookmark) : const Icon(Icons.bookmark_outline))
@@ -208,7 +222,7 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                                 onPressed: () async {
                                   await GetPersonalCart.addItemToCart(widget.book.id, quantity, false);
                                   await GetPersonalCartBooksAndTotals.getCart();
-                                  ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: quantity.toString()+" " + GetPersonalCart.message));
+                                  ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: quantity.toString() + " " + GetPersonalCart.message));
                                 },
                                 style: ButtonStyle(
                                   shape: MaterialStateProperty.all(

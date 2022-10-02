@@ -9,12 +9,11 @@ class GetAllBooks {
   static late List<dynamic> booksBody;
   static getBooks() async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_all_books',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_all_books',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
       booksBody = response.data;
-      print('all');
     } catch (e) {
       return e;
     }

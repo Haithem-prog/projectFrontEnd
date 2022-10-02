@@ -9,7 +9,7 @@ class GetAllBooksByAuthor {
   static late List<dynamic> booksBody;
   static getBooks(authorName) async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_all_books_by_author/$authorName',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_all_books_by_author/$authorName',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));

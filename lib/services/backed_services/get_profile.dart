@@ -12,7 +12,7 @@ class GetAllPurchasedBooks {
   static getBooks() async {
     try {
       id = AuthService.id;
-      response = await dio.get('http://10.0.2.2:8000/api/get_all_purchased_books/$id',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_all_purchased_books/$id',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));

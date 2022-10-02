@@ -15,7 +15,7 @@ class GetPersonalCart {
   static getCartItems() async {
     id = AuthService.id;
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_personal_cart_items/$id',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_personal_cart_items/$id',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
@@ -26,26 +26,26 @@ class GetPersonalCart {
         cartBody = response.data;
       }
     } catch (e) {
-      print(e);
+      return(e);
     }
   }
 
   static late Response cartTotalsBody;
   static getCartTotals() async {
     try {
-      cartTotalsBody = await dio.get('http://10.0.2.2:8000/api/get_total_items_price_and_qty/$id',
+      cartTotalsBody = await dio.get('https://haithemali1.pythonanywhere.com/api/get_total_items_price_and_qty/$id',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
       cartTotals = cartTotalsBody.data;
     } catch (e) {
-      print(e);
+      return(e);
     }
   }
 
   static addItemToCart(int bookId, int qty, bool cartCondition) async {
     try {
-      response = await dio.post('http://10.0.2.2:8000/api/add_remove_cart_items',
+      response = await dio.post('https://haithemali1.pythonanywhere.com/api/add_remove_cart_items',
           data: jsonEncode(
             {
               "user_id": id,
@@ -59,20 +59,19 @@ class GetPersonalCart {
           ));
       message = response.data['msg'];
     } catch (e) {
-      print(e);
+      return(e);
     }
   }
 
   static buyItemsInCart() async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/Buy_items/$id',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/Buy_items/$id',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
       message = response.data['msg'];
     } catch (e) {
-      print(e);
+      return(e);
     }
   }
-
 }

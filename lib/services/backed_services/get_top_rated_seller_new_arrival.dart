@@ -8,7 +8,7 @@ class GetNewArrivalBooks {
   static late List<dynamic> booksBody;
   static getBooks() async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_10top_new_arrival',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_10top_new_arrival',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
@@ -27,7 +27,7 @@ class GetTopRatedBooks {
   static late List<dynamic> booksBody;
   static getBooks() async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_10top_rated',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_10top_rated',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));
@@ -46,7 +46,7 @@ class GetTopSellerBooks {
   static late List<dynamic> booksBody;
   static getBooks() async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_10top_sales',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_10top_sales',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));

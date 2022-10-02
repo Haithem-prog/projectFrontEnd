@@ -9,7 +9,7 @@ class GetAllBooksByGener {
   static late List<dynamic> booksBody;
   static getBooks(generName) async {
     try {
-      response = await dio.get('http://10.0.2.2:8000/api/get_all_books_by_genre/$generName',
+      response = await dio.get('https://haithemali1.pythonanywhere.com/api/get_all_books_by_genre/$generName',
           options: Options(
             headers: {"authorization": "Bearer $token"},
           ));

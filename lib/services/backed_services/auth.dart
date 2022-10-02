@@ -14,11 +14,18 @@ class AuthService {
 
   //register so we maske an account
   signUp(String name, String phoneNumber, String password, String conPassword) async {
+    AuthService.statusCode = 0;
     try {
       response = await dio.post(
-        'http://10.0.2.2:8000/api/signup',
-        data: jsonEncode({"name": "$name", "phone": "$phoneNumber", "password1": password, "password2": conPassword}),
+        'https://haithemali1.pythonanywhere.com/api//signup',
+        data: jsonEncode({
+          "name": name,
+          "phone": phoneNumber,
+          "password1": password,
+          "password2": conPassword,
+        }),
       );
+      print('htr');
       AuthService.signUpMessage = response.data['detail'];
       AuthService.statusCode = response.statusCode!;
     } catch (e) {
@@ -28,9 +35,10 @@ class AuthService {
 
   //Sign in so we get token
   signIn({required String phoneNumber, required String password}) async {
+    AuthService.statusCode = 0;
     try {
       response = await dio.post(
-        'http://10.0.2.2:8000/api/signin',
+        'https://haithemali1.pythonanywhere.com/api/signin',
         data: jsonEncode({"phone": phoneNumber, "password": password}),
       );
 
