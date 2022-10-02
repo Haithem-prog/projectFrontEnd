@@ -102,7 +102,7 @@ class Profile extends StatelessWidget {
             width: 115,
             height: 36,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () { Get.back();},
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(

@@ -13,7 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Saved extends StatefulWidget {
-  const Saved({Key? key}) : super(key: key);
+  Saved({Key? key}) : super(key: key);
+  bool reloading = false;
   static Rx<bool> refreshSaved = false.obs;
 
   @override
@@ -109,17 +110,26 @@ class _SavedState extends State<Saved> {
                                               iconSize: 30,
                                               color: const Color(0xffE9C46A),
                                               onPressed: () async {
-                                                if (e.saved == true) {
-                                                  await SaveUnsave.saveUnsaveBook(e.id, false);
-                                                } else if (e.saved == false) {
-                                                  await SaveUnsave.saveUnsaveBook(e.id, true);
-                                                }
+                                                await SaveUnsave.saveUnsaveBook(e.id, false);
+                                                widget.reloading = true;
+                                                setState(() {});
                                                 ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: SaveUnsave.message));
                                                 await GetSavedBooks.getAllSavedBooks();
                                                 await GetTopSellerRatedNewArrival.changeLists();
-                                                setState(() {});
+                                                setState(() {
+                                                  widget.reloading = false;
+                                                });
                                               },
-                                              icon: e.saved ? const Icon(Icons.bookmark) : const Icon(Icons.bookmark_outline),
+                                              icon: widget.reloading
+                                                  ? SizedBox(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: const CircularProgressIndicator(
+                                                        strokeWidth: 2,
+                                                        color: Colors.amber,
+                                                      ),
+                                                  )
+                                                  : const Icon(Icons.bookmark),
                                             ),
                                           ),
                                         ],

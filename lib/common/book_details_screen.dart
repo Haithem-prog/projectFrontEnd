@@ -218,27 +218,30 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                             ),
                             Expanded(
                               flex: 3,
-                              child: TextButton(
-                                onPressed: () async {
-                                  await GetPersonalCart.addItemToCart(widget.book.id, quantity, false);
-                                  await GetPersonalCartBooksAndTotals.getCart();
-                                  ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: quantity.toString() + " " + GetPersonalCart.message));
-                                },
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(9),
-                                      side: const BorderSide(
-                                        color: AppTheme.mainColor,
-                                        width: 2,
+                              child: Container(
+                                height:45,
+                                child: TextButton(
+                                  onPressed: () async {
+                                    await GetPersonalCart.addItemToCart(widget.book.id, quantity, false);
+                                    await GetPersonalCartBooksAndTotals.getCart();
+                                    ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: quantity.toString() + " " + GetPersonalCart.message));
+                                  },
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(9),
+                                        side: const BorderSide(
+                                          color: AppTheme.mainColor,
+                                          width: 2,
+                                        ),
                                       ),
                                     ),
+                                    backgroundColor: MaterialStateProperty.all(
+                                      AppTheme.mainColor,
+                                    ),
                                   ),
-                                  backgroundColor: MaterialStateProperty.all(
-                                    AppTheme.mainColor,
-                                  ),
+                                  child: TextWidget(t: 'Add to cart', w: FontWeight.w600, c: Colors.white, z: 14),
                                 ),
-                                child: TextWidget(t: 'Add to cart', w: FontWeight.w600, c: Colors.white, z: 13),
                               ),
                             ),
                           ],

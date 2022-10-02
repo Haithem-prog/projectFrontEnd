@@ -25,7 +25,6 @@ class AuthService {
           "password2": conPassword,
         }),
       );
-      print('htr');
       AuthService.signUpMessage = response.data['detail'];
       AuthService.statusCode = response.statusCode!;
     } catch (e) {

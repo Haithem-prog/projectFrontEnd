@@ -14,15 +14,20 @@ import 'package:book_store/view/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:book_store/Text_fields/Text_field.dart';
 
-class Signin extends StatelessWidget {
+class Signin extends StatefulWidget {
   Signin({Key? key}) : super(key: key);
+  bool reloading = false;
+  @override
+  State<Signin> createState() => _SigninState();
+}
 
+class _SigninState extends State<Signin> {
   final TextEditingController phoneNumber = TextEditingController();
+
   final TextEditingController passwords = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    // var register Register ;
     return Scaffold(
         body: GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -53,17 +58,28 @@ class Signin extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10),
           child: TextButton(
             onPressed: () async {
+              widget.reloading = true;
+              setState(() {});
               await AuthService().signIn(phoneNumber: phoneNumber.text, password: passwords.text);
               ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: AuthService.signInMessage));
-              await Future.delayed(Duration(seconds: 1));
+              //await Future.delayed(Duration(seconds: 1));
               if (AuthService.statusCode == 200) {
                 await GetSavedBooks.getAllSavedBooks();
                 await GetTopSellerRatedNewArrival.changeLists();
                 await GetPurchasedBooks.getAllPurchasedBooks();
                 Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNav()));
+                widget.reloading = false;
+                setState(() {});
+              } else {
+                widget.reloading = false;
+                setState(() {});
               }
             },
-            child: const BorderedContainer(child: MyButtonText(text: 'Sign in')),
+            child: widget.reloading
+                ? const CircularProgressIndicator(
+                    color: Colors.amber,
+                  )
+                : const BorderedContainer(child: MyButtonText(text: 'Sign in')),
           ),
         ),
         Center(

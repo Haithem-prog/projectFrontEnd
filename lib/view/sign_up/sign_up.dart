@@ -8,15 +8,24 @@ import 'package:book_store/view/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:book_store/Text_fields/Text_field.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   Signup({
     Key? key,
   }) : super(key: key);
+  bool reloading = false;
+  @override
+  State<Signup> createState() => _SignupState();
+}
 
+class _SignupState extends State<Signup> {
   final TextEditingController name = TextEditingController();
+
   final TextEditingController password = TextEditingController();
+
   final TextEditingController phoneNumber = TextEditingController();
+
   final TextEditingController confirmPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,14 +64,25 @@ class Signup extends StatelessWidget {
           padding: const EdgeInsets.only(top: 24),
           child: TextButton(
             onPressed: () async {
+              widget.reloading = true;
+              setState(() {});
               await AuthService().signUp(name.text, phoneNumber.text, password.text, confirmPassword.text);
               ScaffoldMessenger.of(context).showSnackBar(mySnackBar(message: AuthService.signUpMessage));
               await Future.delayed(const Duration(seconds: 1));
               if (AuthService.statusCode == 200) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => Signin()));
+                widget.reloading = false;
+                setState(() {}); 
+              } else {
+              widget.reloading = false;
+              setState(() {});
               }
             },
-            child: const BorderedContainer(child: MyButtonText(text: 'Sign up')),
+            child: widget.reloading
+                ? const CircularProgressIndicator(
+                    color: Colors.amber,
+                  )
+                : const BorderedContainer(child: MyButtonText(text: 'Sign up')),
           ),
         ),
         Center(

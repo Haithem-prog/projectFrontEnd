@@ -1,7 +1,5 @@
-import 'package:book_store/common/save_checker.dart';
 import 'package:book_store/models/default_book_Model.dart';
 import 'package:book_store/services/backed_services/get_saved_books.dart';
-import 'package:get/get.dart';
 
 class GetSavedBooks {
   static late List? savedBooksIds;
@@ -26,7 +24,6 @@ class GetSavedBooks {
         ));
         savedBooksIds!.add(data[i]['book']['id']);
       }
-      //print(savedBooksIds);
     }
   }
 }
