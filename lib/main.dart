@@ -2,7 +2,12 @@ import 'package:book_store/view/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Future<void> main() async {
+//befoe
+/* Future<void> main() async {
+  runApp(const MyApp());
+} */
+//after
+void main() {
   runApp(const MyApp());
 }
 

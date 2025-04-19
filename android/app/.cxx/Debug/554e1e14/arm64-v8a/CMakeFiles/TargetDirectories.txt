@@ -1,0 +1,2 @@
+C:/Users/haith/Desktop/myFlutter/book_store/android/app/.cxx/Debug/554e1e14/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/haith/Desktop/myFlutter/book_store/android/app/.cxx/Debug/554e1e14/arm64-v8a/CMakeFiles/rebuild_cache.dir
